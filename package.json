@@ -1,0 +1,25 @@
+{
+  "name": "easy-djs",
+  "version": "0.0.2",
+  "description": "Simplifies DiscordJS So Anyone Can Make a Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/easy-djs/easy-djs"
+  },
+  "keywords": [
+    "easydjs"
+  ],
+  "author": "cojored",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/easy-djs/easy-djs/issues"
+  },
+  "homepage": "https://github.com/easy-djs/easy-djs#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  }
+}
