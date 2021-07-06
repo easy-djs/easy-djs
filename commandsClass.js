@@ -1,25 +1,35 @@
 const commandData = {};
 
 function format(reply, message, cmd) {
-	if (reply.includes("firstMention") && !message.mentions.members.first() && !message.mentions.users.first()) {
+	if (
+		reply.includes("firstMention") &&
+		!message.mentions.members.first() &&
+		!message.mentions.users.first()
+	) {
 		message.channel.send(cmd.noMention || "You did not mention a member");
 	} else {
 		repl = reply
 			.toString()
-			.replace("{firstMention}", message.mentions.members.first());
+			.replace(
+				new RegExp("{firstMention}", "g"),
+				message.mentions.members.first()
+			);
 		repl1 = repl
 			.toString()
-			.replace("{firstMention.tag}", message.mentions.users.first().tag);
+			.replace(
+				new RegExp("{firstMention.tag}", "g"),
+				message.mentions.users.first().tag
+			);
 		repl2 = repl1
 			.toString()
 			.replace(
-				"{firstMention.username}",
+				new RegExp("{firstMention.username}", "g"),
 				message.mentions.users.first().username
 			);
 		repl3 = repl2
 			.toString()
 			.replace(
-				"{firstMention.avatar}",
+				new RegExp("{firstMention.avatar}", "g"),
 				message.mentions.users.first().avatarURL()
 			);
 		return repl3;
