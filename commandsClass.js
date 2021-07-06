@@ -8,6 +8,8 @@ function format(reply, message) {
 }
 
 function kick(cmd, message) {
+    if(!message.member.permissions.has("KICK_MEMBERS")) 
+        return message.channel.send(cmd.noPerms || "You do not have permission to use this command")
     switch(cmd.action.kick.toString()){
         case "firstMention":
             message.mentions.members.first().kick()
@@ -21,6 +23,8 @@ function kick(cmd, message) {
 }
 
 function ban(cmd, message){
+    if(!message.member.permissions.has("BAN_MEMBERS")) 
+        return message.channel.send(cmd.noPerms || "You do not have permission to use this command")
     switch(cmd.action.ban.toString()){
         case "firstMention":
             message.mentions.members.first().ban()
@@ -35,11 +39,7 @@ function ban(cmd, message){
 
 class CommandsClass {
     create(cmdname, data){
-        if(data.action){
-          commandData[cmdname] = {reply: data.reply, action: data['action']}
-        }else{
-            commandData[cmdname] = {reply: data.reply}
-        }
+        commandData[cmdname] = data
     }
     exists(cmdName){
         return commandData[cmdName] != null
