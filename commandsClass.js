@@ -1,11 +1,8 @@
 const commandData = {};
 
-function format(reply, message) {
+function format(reply, message, cmd) {
 	if (!message.mentions.members.first() && !message.mentions.users.first()) {
-		repl = reply.toString().replace("{firstMention}", "<no mention>");
-		repl1 = repl.toString().replace("{firstMention.tag}", "<no mention>");
-		repl2 = repl1.toString().replace("{firstMention.username}", "<no mention>");
-		return repl2;
+		message.channel.send(cmd.noMention || "You did not mention a member");
 	} else {
 		repl = reply
 			.toString()
@@ -24,6 +21,11 @@ function format(reply, message) {
 }
 
 function kick(cmd, message) {
+	if (!message.mentions.members.first() && !message.mentions.users.first())
+		return message.channel.send(
+			cmd.noMention || "You did not mention a member"
+		);
+
 	if (!message.member.permissions.has("KICK_MEMBERS"))
 		return message.channel.send(
 			cmd.noPerms || "You do not have permission to use this command"
@@ -32,7 +34,7 @@ function kick(cmd, message) {
 		case "firstMention":
 			message.mentions.members.first().kick();
 			if (cmd.reply) {
-				message.channel.send(format(cmd.reply, message));
+				message.channel.send(format(cmd.reply, message, cmd));
 			}
 			break;
 		default:
@@ -41,6 +43,10 @@ function kick(cmd, message) {
 }
 
 function ban(cmd, message) {
+	if (!message.mentions.members.first() && !message.mentions.users.first())
+		return message.channel.send(
+			cmd.noMention || "You did not mention a member"
+		);
 	if (!message.member.permissions.has("BAN_MEMBERS"))
 		return message.channel.send(
 			cmd.noPerms || "You do not have permission to use this command"
@@ -49,7 +55,7 @@ function ban(cmd, message) {
 		case "firstMention":
 			message.mentions.members.first().ban();
 			if (cmd.reply) {
-				message.channel.send(format(cmd.reply, message));
+				message.channel.send(format(cmd.reply, message, cmd));
 			}
 			break;
 		default:
@@ -70,7 +76,7 @@ class CommandsClass {
 	execute(cmdName, message) {
 		let cmd = commandData[cmdName];
 		if (!cmd.action) {
-			message.channel.send(format(cmd.reply, message));
+			message.channel.send(format(cmd.reply, message, cmd));
 		} else {
 			switch (Object.keys(cmd.action)[0].toString()) {
 				case "kick":
