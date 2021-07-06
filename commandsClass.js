@@ -7,7 +7,7 @@ function format(reply, message, cmd) {
 		!message.mentions.users.first()
 	) {
 		message.channel.send(cmd.noMention || "You did not mention a member");
-	} else {
+	} else if(reply.includes("firstMention")) {
 		repl = reply
 			.toString()
 			.replace(
