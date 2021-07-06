@@ -70,6 +70,7 @@ function ban(cmd, message) {
 class CommandsClass {
 	create(cmdname, data) {
 		commandData[cmdname] = data;
+		console.log("Loaded Command " + cmdname)
 	}
 	exists(cmdName) {
 		return commandData[cmdName] != null;
