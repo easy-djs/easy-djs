@@ -12,17 +12,19 @@ const Bot = new easydjs.Bot("<token>", prefix); // replace <token> with your tok
 Bot.initiate();
 
 Bot.commands.create("kick", {
-  reply: "Kicked #{firstMention.tag}",
+  reply: { text: "Kicked #{firstMention.tag}" },
   action: { kick: "firstMention" },
 });
 
 Bot.commands.create("ban", {
-  reply: "Banned #{firstMention.tag}",
+  reply: { text: "Banned #{firstMention.tag}" },
   action: { ban: "firstMention" },
 });
 
 Bot.commands.create("help", {
-  reply: `${prefix}kick <mention>\n${prefix}ban <mention>\n${prefix}help`,
+  reply: {
+    text: `${prefix}kick <mention>\n${prefix}ban <mention>\n${prefix}help`,
+  },
 });
 
 Bot.commands.create("av", {
