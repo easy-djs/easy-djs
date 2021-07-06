@@ -1,4 +1,4 @@
-# Simple DJS
+# Easy DJS
 This package makes bot creation avaliable for everyone. It simplifies what would be hundreds of lines of code into like 5
 
 # Basic Bot Code
