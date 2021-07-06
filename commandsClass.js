@@ -1,7 +1,7 @@
 const commandData = {};
 
 function format(reply, message, cmd) {
-	if (!message.mentions.members.first() && !message.mentions.users.first()) {
+	if (reply.includes("firstMention") && !message.mentions.members.first() && !message.mentions.users.first()) {
 		message.channel.send(cmd.noMention || "You did not mention a member");
 	} else {
 		repl = reply
@@ -16,7 +16,13 @@ function format(reply, message, cmd) {
 				"{firstMention.username}",
 				message.mentions.users.first().username
 			);
-		return repl2;
+		repl3 = repl2
+			.toString()
+			.replace(
+				"{firstMention.avatar}",
+				message.mentions.users.first().avatarURL()
+			);
+		return repl3;
 	}
 }
 
@@ -70,7 +76,7 @@ function ban(cmd, message) {
 class CommandsClass {
 	create(cmdname, data) {
 		commandData[cmdname] = data;
-		console.log("Loaded Command " + cmdname)
+		console.log("Loaded Command " + cmdname);
 	}
 	exists(cmdName) {
 		return commandData[cmdName] != null;
