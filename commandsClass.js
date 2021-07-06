@@ -32,6 +32,8 @@ function kick(cmd, message) {
 		);
 	switch (cmd.action.kick.toString()) {
 		case "firstMention":
+			if (message.mentions.members.first().kickable === false)
+				return message.channel.send("I cannot kick that user");
 			message.mentions.members.first().kick();
 			if (cmd.reply) {
 				message.channel.send(format(cmd.reply, message, cmd));
@@ -53,6 +55,8 @@ function ban(cmd, message) {
 		);
 	switch (cmd.action.ban.toString()) {
 		case "firstMention":
+			if (message.mentions.members.first().bannable === false)
+				return message.channel.send("I cannot ban that user");
 			message.mentions.members.first().ban();
 			if (cmd.reply) {
 				message.channel.send(format(cmd.reply, message, cmd));
