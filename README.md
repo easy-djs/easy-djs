@@ -23,7 +23,7 @@ Bot.commands.create("ban", {
 
 Bot.commands.create("help", {
   reply: {
-    text: `${prefix}kick <mention>\n${prefix}ban <mention>\n${prefix}help`,
+    text: `${prefix}kick <mention>\n${prefix}ban <mention>\n${prefix}help\n${prefix}av <mention>`,
   },
 });
 
@@ -96,3 +96,29 @@ firstMention
 ```
 {text: "the text shown after the type"}
 ```
+
+# Message Variables
+
+#### Format Example
+```#{firstMention.avatar}``` - Shows the users avatar
+
+## Possible
+
+### .avatar
+Inserts the avatar url
+
+### .username
+Inserts the username
+
+### .tag
+Inserts the tag
+
+### Nothing
+Inserts a mention for the user ex ```#{firstMention}``` inserts a mention of the first user mentioned
+
+
+| Options                                             |
+| --------------------------------------------------- |
+| firstMention |
+| author |
+
