@@ -30,7 +30,7 @@ function format(reply, message, cmd) {
 			.toString()
 			.replace(
 				new RegExp("{firstMention.avatar}", "g"),
-				message.mentions.members.first().avatarURL()
+				message.mentions.users.first().avatarURL()
 			);
 		return repl3;
 	} else {

@@ -1,6 +1,6 @@
 {
   "name": "easy-djs",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Simplifies DiscordJS So Anyone Can Make a Bot",
   "main": "index.js",
   "scripts": {
