@@ -25,7 +25,7 @@ That is the code for a bot with the commands kick, ban and help that sets the st
 Location ```Bot.commands.create("commandName")```
 
 ### reply: 
-{reply: "What should the bot reply with"}
+```{reply: "What should the bot reply with"}```
 
 # Command Create Optional Params
 
