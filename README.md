@@ -9,9 +9,9 @@ const Bot = new easydjs.Bot("<token>", prefix)
 
 Bot.initiate()
 
-Bot.commands.create("kick", {reply: "Kicked {firstMention.tag}", action: {kick: "firstMention"}})
+Bot.commands.create("kick", {reply: "Kicked #{firstMention.tag}", action: {kick: "firstMention"}})
 
-Bot.commands.create("ban", {reply: "Banned {firstMention.tag}", action: {ban: "firstMention"}})
+Bot.commands.create("ban", {reply: "Banned #{firstMention.tag}", action: {ban: "firstMention"}})
 
 Bot.commands.create("help", {reply: `${prefix}kick <mention>\n${prefix}ban <mention>\n${prefix}help`})
 
@@ -24,8 +24,12 @@ That is the code for a bot with the commands kick, ban and help that sets the st
 ### commandName: 
 Location ```Bot.commands.create("commandName")```
 
-### reply: 
-```{reply: "What should the bot reply with"}```
+### reply
+Reply Text  | Reply Embed
+------------- | -------------
+```{reply: {text: "What should the bot reply with"}}```  | ```{reply: {title: "What should the title be"}}```
+
+For a list of all the possible embed fields reference "https://discordjs.guide/popular-topics/embeds.html#using-an-embed-object"
 
 # Command Create Optional Params
 
@@ -35,7 +39,11 @@ Location ```Bot.commands.create("commandName")```
 ```
 kick/ban should the action be kicking or banning
 
-"firstMention" who should the action be completed on options firstMention
+"firstMention" who should the action be completed on
+
+Options 
+-------------
+firstMention
 
 ### noMention:
 ```
