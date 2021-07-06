@@ -27,7 +27,7 @@ class Bot {
 			if (!message.content.startsWith(this.prefix)) return;
 
 			const args = message.content.slice(this.prefix.length).trim().split(/ +/);
-			const command = args.shift().toLowerCase();
+			const command = args.shift()
             if(this.commands.exists(command)){
                 this.commands.execute(command, message)
             }
