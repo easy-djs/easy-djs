@@ -33,6 +33,8 @@ function format(reply, message, cmd) {
 				message.mentions.users.first().avatarURL()
 			);
 		return repl3;
+	}else{
+		return reply
 	}
 }
 
