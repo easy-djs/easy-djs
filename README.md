@@ -30,7 +30,7 @@ Location ```Bot.commands.create("commandName")```
 # Command Create Optional Params
 
 ### action:
-```json
+```
 {action: {kick/ban: "firstMention"}}
 ```
 kick/ban should the action be kicking or banning
@@ -38,23 +38,23 @@ kick/ban should the action be kicking or banning
 "firstMention" who should the action be completed on options firstMention
 
 ### noMention:
-```json
+```
 {noMention: "what should be sent when no one is mentioned"}
 ```
 
 ### noPerms:
-```json
+```
 {noPerms: "What should be sent when a user does not have permission to use a command"}
 ```
 
 # SetStatus Required Params
 
 ### type:
-```json
+```
 {type: "status type options: watching, playing, listening"}
 ```
 
 ### text:
-```json
+```
 {text: "the text shown after the type"}
 ```
