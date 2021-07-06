@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const CommandsClass = require("./commandsClass.js");
+const CommandsClass = require("./modules/commandsClass.js");
 
 class Bot {
 	constructor(token = undefined, prefix = "?") {
