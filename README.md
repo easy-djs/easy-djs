@@ -51,7 +51,7 @@ Location `Bot.commands.create("commandName")`
 
 | Reply Text                                          | Reply Embed                                    |
 | --------------------------------------------------- | ---------------------------------------------- |
-| `{reply: {text: "What should the bot reply with"}}` | `{reply: {title: "What should the title be"}}` |
+| `{reply: {text: "What should the bot reply with"}}` | `{reply: {embed: {title: "What should the title be"}}}` |
 
 For a list of all the possible embed fields reference "https://discordjs.guide/popular-topics/embeds.html#using-an-embed-object"
 
