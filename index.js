@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const CommandsClass = require("./commandsClass.js")
+const CommandsClass = require("./commandsClass.js");
 
 class Bot {
 	constructor(token = undefined, prefix = "?") {
@@ -12,13 +12,13 @@ class Bot {
 			} catch {
 				throw "Problem Logging in to Bot. Check your Token";
 			}
-			this.prefix = prefix
-            client.on("ready", () => {
-            console.log("Logged in as " + client.user.tag)
-            console.log("Prefix set to " + this.prefix)
-            })
+			this.prefix = prefix;
+			client.on("ready", () => {
+				console.log("Logged in as " + client.user.tag);
+				console.log("Prefix set to " + this.prefix);
+			});
 		}
-        this.commands = new CommandsClass()
+		this.commands = new CommandsClass();
 	}
 	initiate() {
 		client.on("message", (message) => {
@@ -27,10 +27,10 @@ class Bot {
 			if (!message.content.startsWith(this.prefix)) return;
 
 			const args = message.content.slice(this.prefix.length).trim().split(/ +/);
-			const command = args.shift()
-            if(this.commands.exists(command)){
-                this.commands.execute(command, message)
-            }
+			const command = args.shift();
+			if (this.commands.exists(command)) {
+				this.commands.execute(command, message);
+			}
 		});
 	}
 }

@@ -5,7 +5,7 @@ function format(reply, message) {
 		repl = reply.toString().replace("{firstMention}", "<no mention>");
 		repl1 = repl.toString().replace("{firstMention.tag}", "<no mention>");
 		repl2 = repl1.toString().replace("{firstMention.username}", "<no mention>");
-        return repl2
+		return repl2;
 	} else {
 		repl = reply
 			.toString()
@@ -19,7 +19,7 @@ function format(reply, message) {
 				"{firstMention.username}",
 				message.mentions.users.first().username
 			);
-            return repl2;
+		return repl2;
 	}
 }
 
@@ -70,9 +70,9 @@ class CommandsClass {
 	execute(cmdName, message) {
 		let cmd = commandData[cmdName];
 		if (!cmd.action) {
-            message.channel.send(format(cmd.reply, message))
+			message.channel.send(format(cmd.reply, message));
 		} else {
-            switch (Object.keys(cmd.action)[0].toString()) {
+			switch (Object.keys(cmd.action)[0].toString()) {
 				case "kick":
 					kick(cmd, message);
 					break;
