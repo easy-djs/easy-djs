@@ -1,5 +1,14 @@
 const commandData = {};
 
+function replace(template, variables) {
+	return template.replace(
+		new RegExp("{([^{]+)}", "g"),
+		function (_unused, varName) {
+			return variables[varName];
+		}
+	);
+}
+
 function format(reply, message, cmd) {
 	if (
 		reply.includes("firstMention") &&
@@ -8,31 +17,12 @@ function format(reply, message, cmd) {
 	) {
 		return cmd.noMention || "You did not mention a member";
 	} else if (reply.includes("firstMention")) {
-		repl = reply
-			.toString()
-			.replace(
-				new RegExp("{firstMention}", "g"),
-				message.mentions.members.first()
-			);
-		repl1 = repl
-			.toString()
-			.replace(
-				new RegExp("{firstMention.tag}", "g"),
-				message.mentions.users.first().tag
-			);
-		repl2 = repl1
-			.toString()
-			.replace(
-				new RegExp("{firstMention.username}", "g"),
-				message.mentions.users.first().username
-			);
-		repl3 = repl2
-			.toString()
-			.replace(
-				new RegExp("{firstMention.avatar}", "g"),
-				message.mentions.users.first().avatarURL()
-			);
-		return repl3;
+		return replace(reply, {
+			firstMention: message.mentions.members.first(),
+			"firstMention.tag": message.mentions.users.first().tag,
+			"firstMention.username": message.mentions.users.first().username,
+			"firstMention.avatar": message.mentions.users.first().avatarURL(),
+		});
 	} else {
 		return reply;
 	}
