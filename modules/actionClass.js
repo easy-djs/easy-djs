@@ -1,9 +1,9 @@
 const formatClass = require("./formatClass");
 
 class actionClass {
-    constructor(){
-        this.format = new formatClass();
-    }
+	constructor() {
+		this.format = new formatClass();
+	}
 	kick(cmd, message) {
 		if (!message.mentions.members.first() && !message.mentions.users.first())
 			return message.channel.send(
@@ -20,7 +20,9 @@ class actionClass {
 					return message.channel.send("I cannot kick that user");
 				message.mentions.members.first().kick();
 				if (cmd.reply.text) {
-					message.channel.send(this.format.formatText(cmd.reply.text, message, cmd));
+					message.channel.send(
+						this.format.formatText(cmd.reply.text, message, cmd)
+					);
 				} else if (cmd.reply.embed) {
 					message.channel.send({
 						embed: this.format.formatEmbed(cmd.reply.embed, message, cmd),
@@ -47,7 +49,9 @@ class actionClass {
 					return message.channel.send("I cannot ban that user");
 				message.mentions.members.first().ban();
 				if (cmd.reply.text) {
-					message.channel.send(this.format.formatText(cmd.reply.text, message, cmd));
+					message.channel.send(
+						this.format.formatText(cmd.reply.text, message, cmd)
+					);
 				} else if (cmd.reply.embed) {
 					message.channel.send({
 						embed: this.format.formatEmbed(cmd.reply.embed, message, cmd),
