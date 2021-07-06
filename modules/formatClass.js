@@ -1,16 +1,5 @@
 const options = ["firstUserMention", "author"];
 
-const replaceData = {
-	firstMention: message.mentions.members.first(),
-	"firstMention.tag": message.mentions.users.first().tag,
-	"firstMention.username": message.mentions.users.first().username,
-	"firstMention.avatar": message.mentions.users.first().avatarURL(),
-	author: message.author,
-	"author.tag": message.author.tag,
-	"author.username": message.author.username,
-	"author.avatar": message.author.avatarURL(),
-};
-
 function replace(template, variables) {
 	return template.replace(
 		new RegExp("#{([^{]+)}", "g"),
@@ -31,7 +20,16 @@ class formatClass {
 		} else if (JSON.stringify(reply).includes("firstMention")) {
 			return JSON.parse(JSON.stringify(reply), (k, v) => {
 				if (typeof v === "string") {
-					return replace(v, replaceData);
+					return replace(v, {
+						firstMention: message.mentions.members.first(),
+						"firstMention.tag": message.mentions.users.first().tag,
+						"firstMention.username": message.mentions.users.first().username,
+						"firstMention.avatar": message.mentions.users.first().avatarURL(),
+						author: message.author,
+						"author.tag": message.author.tag,
+						"author.username": message.author.username,
+						"author.avatar": message.author.avatarURL(),
+					});
 				} else return v;
 			});
 		} else {
@@ -47,7 +45,16 @@ class formatClass {
 		) {
 			return cmd.noMention || "You did not mention a member";
 		} else if (reply.includes("firstMention")) {
-			return replace(reply, replaceData);
+			return replace(reply, {
+				firstMention: message.mentions.members.first(),
+				"firstMention.tag": message.mentions.users.first().tag,
+				"firstMention.username": message.mentions.users.first().username,
+				"firstMention.avatar": message.mentions.users.first().avatarURL(),
+				author: message.author,
+				"author.tag": message.author.tag,
+				"author.username": message.author.username,
+				"author.avatar": message.author.avatarURL(),
+			});
 		} else {
 			return reply;
 		}
