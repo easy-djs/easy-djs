@@ -1,18 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-let commandData = {}
-
-class CommandsClass {
-    create(cmdname, reply){
-        commandData[cmdname] = {reply: reply}
-    }
-    exists(cmdName){
-        return commandData[cmdName] != null
-    }
-    get(cmdName){
-        return commandData[cmdName]
-    }
-}
+const CommandsClass = require("./commandsClass.js")
 
 class Bot {
 	constructor(token = undefined, prefix = "?") {
@@ -41,7 +29,7 @@ class Bot {
 			const args = message.content.slice(this.prefix.length).trim().split(/ +/);
 			const command = args.shift().toLowerCase();
             if(this.commands.exists(command)){
-                message.channel.send(this.commands.get(command).reply)
+                this.commands.execute(command, message)
             }
 		});
 	}
