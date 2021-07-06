@@ -6,8 +6,8 @@ function format(reply, message, cmd) {
 		!message.mentions.members.first() &&
 		!message.mentions.users.first()
 	) {
-		message.channel.send(cmd.noMention || "You did not mention a member");
-	} else if(reply.includes("firstMention")) {
+		return cmd.noMention || "You did not mention a member";
+	} else if (reply.includes("firstMention")) {
 		repl = reply
 			.toString()
 			.replace(
@@ -30,11 +30,11 @@ function format(reply, message, cmd) {
 			.toString()
 			.replace(
 				new RegExp("{firstMention.avatar}", "g"),
-				message.mentions.users.first().avatarURL()
+				message.mentions.members.first().avatarURL()
 			);
 		return repl3;
-	}else{
-		return reply
+	} else {
+		return reply;
 	}
 }
 
