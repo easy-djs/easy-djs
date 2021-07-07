@@ -12,19 +12,22 @@ function replace(template, variables) {
 class formatClass {
 	formatEmbed(reply, message, cmd) {
 		if (
-			options.some((el) => JSON.stringify(reply).includes(el)) &&
+			JSON.stringify(reply).includes("firstUserMention") &&
 			!message.mentions.members.first() &&
 			!message.mentions.users.first()
 		) {
 			return {title: cmd.noMention || "You did not mention a member"};
-		} else if (JSON.stringify(reply).includes("firstMention")) {
+		} else if (options.some((el) => JSON.stringify(reply).includes(el))) {
 			return JSON.parse(JSON.stringify(reply), (k, v) => {
 				if (typeof v === "string") {
 					return replace(v, {
-						firstMention: message.mentions.members.first(),
-						"firstMention.tag": message.mentions.users.first().tag,
-						"firstMention.username": message.mentions.users.first().username,
-						"firstMention.avatar": message.mentions.users.first().avatarURL(),
+						firstUserMention: message.mentions.members.first(),
+						"firstUserMention.tag": message.mentions.users.first().tag,
+						"firstUserMention.username":
+							message.mentions.users.first().username,
+						"firstUserMention.avatar": message.mentions.users
+							.first()
+							.avatarURL(),
 						author: message.author,
 						"author.tag": message.author.tag,
 						"author.username": message.author.username,
@@ -39,17 +42,17 @@ class formatClass {
 
 	formatText(reply, message, cmd) {
 		if (
-			options.some((el) => reply.includes(el)) &&
+			reply.includes("firstUserMention") &&
 			!message.mentions.members.first() &&
 			!message.mentions.users.first()
 		) {
 			return cmd.noMention || "You did not mention a member";
-		} else if (reply.includes("firstMention")) {
+		} else if (options.some((el) => reply.includes(el))) {
 			return replace(reply, {
-				firstMention: message.mentions.members.first(),
-				"firstMention.tag": message.mentions.users.first().tag,
-				"firstMention.username": message.mentions.users.first().username,
-				"firstMention.avatar": message.mentions.users.first().avatarURL(),
+				firstUserMention: message.mentions.members.first(),
+				"firstUserMention.tag": message.mentions.users.first().tag,
+				"firstUserMention.username": message.mentions.users.first().username,
+				"firstUserMention.avatar": message.mentions.users.first().avatarURL(),
 				author: message.author,
 				"author.tag": message.author.tag,
 				"author.username": message.author.username,
