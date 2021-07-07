@@ -12,13 +12,13 @@ const Bot = new easydjs.Bot("<token>", prefix); // replace <token> with your tok
 Bot.initiate();
 
 Bot.commands.create("kick", {
-  reply: { text: "Kicked #{firstMention.tag}" },
-  action: { kick: "firstMention" },
+  reply: { text: "Kicked #{firstUserMention.tag}" },
+  action: { kick: "firstUserMention" },
 });
 
 Bot.commands.create("ban", {
-  reply: { text: "Banned #{firstMention.tag}" },
-  action: { ban: "firstMention" },
+  reply: { text: "Banned #{firstUserMention.tag}" },
+  action: { ban: "firstUserMention" },
 });
 
 Bot.commands.create("help", {
@@ -30,8 +30,8 @@ Bot.commands.create("help", {
 Bot.commands.create("av", {
   reply: {
     embed: {
-      title: "#{firstMention.username}'s avatar",
-      image: { url: "#{firstMention.avatar}" },
+      title: "#{firstUserMention.username}'s avatar",
+      image: { url: "#{firstUserMention.avatar}" },
     },
   },
 });
@@ -60,16 +60,16 @@ For a list of all the possible embed fields reference "https://discordjs.guide/p
 ### action:
 
 ```
-{action: {kick/ban: "firstMention"}}
+{action: {kick/ban: "firstUserMention"}}
 ```
 
 kick/ban should the action be kicking or banning
 
-"firstMention" who should the action be completed on
+"firstUserMention" who should the action be completed on
 
 ## Options
 
-firstMention
+firstUserMention
 
 ### noMention:
 
@@ -100,7 +100,7 @@ firstMention
 # Message Variables
 
 #### Format Example
-```#{firstMention.avatar}``` - Shows the users avatar
+```#{firstUserMention.avatar}``` - Shows the users avatar
 
 ## Possible
 
@@ -114,11 +114,11 @@ Inserts the username
 Inserts the tag
 
 ### Nothing
-Inserts a mention for the user ex ```#{firstMention}``` inserts a mention of the first user mentioned
+Inserts a mention for the user ex ```#{firstUserMention}``` inserts a mention of the first user mentioned
 
 
 | Options                                             |
 | --------------------------------------------------- |
-| firstMention |
+| firstUserMention |
 | author |
 
