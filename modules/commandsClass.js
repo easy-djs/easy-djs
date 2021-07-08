@@ -4,9 +4,10 @@ const formatClass = require("./formatClass");
 const commandData = {};
 
 class CommandsClass {
-	constructor() {
-		this.format = new formatClass();
+	constructor(prefix, muterole) {
+		this.format = new formatClass(prefix);
 		this.actions = new actionClass();
+		this.muterole = muterole;
 	}
 	create(cmdname, data) {
 		commandData[cmdname] = data;
@@ -38,8 +39,17 @@ class CommandsClass {
 				case "ban":
 					this.actions.ban(cmd, message);
 					break;
+				case "mute":
+					this.actions.mute(cmd, message, this.muterole);
+					break;
+				case "unmute":
+					this.actions.unmute(cmd, message, this.muterole);
+					break;
+				case "purge":
+					this.actions.purge(cmd, messagee);
+					break;
 				default:
-					throw "What action should happen\n\nOptions:\nkick\nban";
+					throw "What action should happen\n\nOptions:\nkick\nban\nmute\nunmute\npurge";
 			}
 		}
 	}

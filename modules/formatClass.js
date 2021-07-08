@@ -7,7 +7,7 @@ function replace(template, variables) {
 	);
 }
 
-function setFD(fData, message) {
+function setFD(fData, message, prefix) {
 	Object.assign(
 		fData,
 		message.mentions.members.first() && {
@@ -23,17 +23,28 @@ function setFD(fData, message) {
 			"firstUserMention.avatar": message.mentions.users
 				.first()
 				.avatarURL({dynamic: true}),
-		},
-		message.author && {author: message.author},
-		message.author && {"author.tag": message.author.tag},
-		message.author && {"author.username": message.author.username},
-		message.author && {
-			"author.avatar": message.author.avatarURL({dynamic: true}),
 		}
 	);
+	Object.assign(fData, {
+		author: message.author,
+		"author.tag": message.author.tag,
+		"author.username": message.author.username,
+		"author.avatar": message.author.avatarURL({dynamic: true}),
+	});
+	const args = message.content.slice(prefix.length).trim().split(/ +/);
+	args.shift();
+	fData["args"] = args;
+	console.log(fData["args"] + " " + args);
+	for (arg in args) {
+		console.log(arg);
+		fData["arg" + arg] = args[arg];
+	}
 }
 
 class formatClass {
+	constructor(prefix) {
+		this.prefix = prefix;
+	}
 	formatEmbed(reply, message, cmd) {
 		let fData = {};
 		if (
@@ -42,7 +53,7 @@ class formatClass {
 			!message.mentions.users.first()
 		)
 			return {title: cmd.noMention || "You did not mention a member"};
-		setFD(fData, message);
+		setFD(fData, message, this.prefix);
 		return JSON.parse(JSON.stringify(reply), (k, v) => {
 			if (typeof v === "string") {
 				return replace(v, fData);
@@ -59,7 +70,7 @@ class formatClass {
 		)
 			return cmd.noMention || "You did not mention a member";
 		setFD(fData, message);
-		let repl = replace(reply, fData);
+		let repl = replace(reply, fData, this.prefix);
 		console.log(repl);
 		return repl;
 	}

@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const CommandsClass = require("./modules/commandsClass.js");
 
 class Bot {
-	constructor(token = undefined, prefix = "?") {
+	constructor(token = undefined, prefix = "?", muterole) {
 		if (token === undefined) {
 			throw "No Token Specified";
 		} else {
@@ -18,7 +18,7 @@ class Bot {
 				console.log('Prefix set to "' + this.prefix + '"');
 			});
 		}
-		this.commands = new CommandsClass();
+		this.commands = new CommandsClass(prefix, muterole);
 	}
 	initiate() {
 		client.on("message", (message) => {
