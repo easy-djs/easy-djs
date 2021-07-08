@@ -1,4 +1,0 @@
----
-permalink: /docs/help/
----
-# testinggg
