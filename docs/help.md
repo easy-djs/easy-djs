@@ -1,1 +1,4 @@
+---
+permalink: /docs/help/
+---
 # test

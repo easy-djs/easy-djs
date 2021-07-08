@@ -2,7 +2,3 @@ theme: jekyll-theme-cayman
 title: Easy DJS
 description: Everyone Should Be Able to Make a Bot
 favicon: favicon.ico
-defaults:
-  -
-    scope: 
-      path: "docs"
