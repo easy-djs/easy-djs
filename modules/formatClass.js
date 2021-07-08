@@ -34,9 +34,8 @@ function setFD(fData, message, prefix) {
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	args.shift();
 	fData["args"] = args;
-	console.log(fData["args"] + " " + args);
+	fData["msg"] = args.join(" ")
 	for (arg in args) {
-		console.log(arg);
 		fData["arg" + arg] = args[arg];
 	}
 }
