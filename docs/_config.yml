@@ -1,2 +1,2 @@
-baseurl: "/docs"
+baseurl: /docs
 remote_theme: easy-djs/docs-theme
