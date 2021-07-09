@@ -4,7 +4,7 @@ nav_order: 1
 parent: Commands
 ---
 
-# Bot.commands.create()
+# **Bot.commands.create()**
 
 ## Command Name
 
