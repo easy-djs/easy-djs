@@ -10,10 +10,10 @@ First User Mentioned
 
 | Argument                                                | What it Gives                                                     | Where it can be used                                     |
 | ------------------------------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------- |
-| [firstUserMention](#firstUserMention)                   | The first user mentioned                                          | Replys, Kick Action, Ban Action, Mute and Unmute Actions |
-| [firstUserMention.username](#firstUserMention.username) | Gives the username of the first user mentioned example: `cojored` | Replys                                                   |
-| [firstUserMention.tag](#firstUserMention.tag)           | Gives the tag of the first user mentioned example: `cojored#2177` | Replys                                                   |
-| [firstUserMention.avatar](#firstUserMention.avatar)     | Gives avatar url of the first user mentioned                      | Replys                                                   |
+| [firstUserMention](#firstusermention)                   | The first user mentioned                                          | Replys, Kick Action, Ban Action, Mute and Unmute Actions |
+| [firstUserMention.username](#firstusermentionusername) | Gives the username of the first user mentioned example: `cojored` | Replys                                                   |
+| [firstUserMention.tag](#firstusermentiontag)           | Gives the tag of the first user mentioned example: `cojored#2177` | Replys                                                   |
+| [firstUserMention.avatar](#firstusermentionavatar)     | Gives avatar url of the first user mentioned                      | Replys                                                   |
 
 # firstUserMention
 
