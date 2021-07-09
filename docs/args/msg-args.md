@@ -9,7 +9,7 @@ parent: Arguments
 | Argument                                   | What it Gives                                                     | Where it can be used |
 | ------------------------------------------ | ----------------------------------------------------------------- | -------------------- |
 | [args](#args)                              | All the message arguments seperated by commas                     | Replies              |
-| [arg<number>](#argnumber) example `arg1` | Gives specified argument you specify the argument with the number | Replies              |
+| [arg\<number\>](#argnumber) example `arg1` | Gives specified argument you specify the argument with the number | Replies              |
 | [msg](#msg)                                | Gives the message without the command                             | Replies              |
 
 # **args**
