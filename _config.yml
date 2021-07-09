@@ -2,3 +2,7 @@ remote_theme: easy-djs/docs-theme
 title: Easy DJS
 favicon: favicon.ico
 search_enabled: true
+search.previews: 3
+search.tokenizer_separator: /[\s/]+/
+search.preview_words_before: 5
+search.preview_words_after: 10
