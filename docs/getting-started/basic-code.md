@@ -9,9 +9,9 @@ parent: Getting Started
 ```javascript
 const easydjs = require("easy-djs");
 const prefix = "<prefix>"; // replace <prefix> with what you want the token to be
-const Bot = new easydjs.Bot("<token>", prefix); // replace <token> with your token
+const Bot = new easydjs.Bot("<token>", prefix, "<muteRoleId Optional>"); // replace <token> with your token and <muteRoleId Optional> with the id of the mute role 
 
-Bot.initiate();
+Bot.initiate(); // Makes the bot start waiting for commands
 
 Bot.commands.create("kick", {
 	reply: {text: "Kicked #{firstUserMention.tag}"},

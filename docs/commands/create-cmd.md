@@ -35,4 +35,20 @@ Reply data goes in the second field for example
 Bot.commands.create("Hi", {reply: {text: "Hello"}});
 ```
 
+## noMention
+
+Set the text to be sent when no one is mentioned and the command requires a mention in the command below this is the noMention field `noMention: "You did not mention anyone"`
+
+```js
+Bot.commands.create("av", {reply: {text: "#{firstUserMention.avatar}", noMention: "You did not mention anyone"}});
+```
+
+
+## noPerms
+
+Like noMention but for actions when a user does not have permission to execute an action in the command below it is `noPerms: "But.... You Can't"`
+
+```js
+Bot.commands.create("kick", {reply: {text: "Kicked #{firstUserMention.username}", action: {kick: "firstUserMention"} noPerms: "But.... You Can't"}});
+```
 
