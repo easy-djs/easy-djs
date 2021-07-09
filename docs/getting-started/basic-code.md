@@ -40,3 +40,5 @@ Bot.commands.create("av", {
 
 Bot.setStatus({type: "watching", text: "YouTube"});
 ```
+
+This is the code for help, kick, ban and avatar cmds avatar is av
