@@ -27,7 +27,7 @@ arguments.
 | Easy-DJS        | 3                 | arg3                                  |
 
 
-# **args<number>**
+# **args\<number\>**
 
 Gives the argument specified by the number reference the table above for more information.
 
