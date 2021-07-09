@@ -125,7 +125,7 @@ class actionClass {
 		switch (cmd.action.mute.toString()) {
 			case "firstUserMention":
 				if (
-					message.client.member.roles.highest.position <=
+					message.guild.me.roles.highest.position <=
 					message.mentions.members.first().roles.highest.position
 				)
 					return message.channel.send("I cannot mute that user");
@@ -174,7 +174,7 @@ class actionClass {
 		switch (cmd.action.unmute.toString()) {
 			case "firstUserMention":
 				if (
-					message.client.member.roles.highest.position <=
+					message.guild.me.roles.highest.position <=
 					message.mentions.members.first().roles.highest.position
 				)
 					return message.channel.send("I cannot Unmute that user");
