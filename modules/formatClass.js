@@ -68,11 +68,11 @@ class formatClass {
 			!message.mentions.users.first()
 		)
 			return cmd.noMention || "You did not mention a member";
-		setFD(fData, message);
+		setFD(fData, message, this.prefix);
 		let repl = replace(reply, fData, this.prefix);
-		console.log(repl);
 		return repl;
 	}
 }
+
 
 module.exports = formatClass;

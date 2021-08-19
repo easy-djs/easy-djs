@@ -1,8 +1,8 @@
 const formatClass = require("./formatClass");
 
 class actionClass {
-	constructor() {
-		this.format = new formatClass();
+	constructor(format) {
+		this.format = format;
 	}
 	kick(cmd, message) {
 		if (!message.mentions.members.first() && !message.mentions.users.first())

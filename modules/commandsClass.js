@@ -6,7 +6,7 @@ const commandData = {};
 class CommandsClass {
 	constructor(prefix, muterole) {
 		this.format = new formatClass(prefix);
-		this.actions = new actionClass();
+		this.actions = new actionClass(this.format);
 		this.muterole = muterole;
 	}
 	create(cmdname, data) {
