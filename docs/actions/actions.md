@@ -11,7 +11,7 @@ nav_order: 4
 | ban    | firstUserMention | It Bans Someone                                          |
 | mute   | firstUserMention | It Mutes Someone (Adds a mute role to the user)          |
 | unmute | firstUserMention | It Unmutes Someone (Removes the mute role from someone ) |
-| purge  | amount (number)  | Purges x amount of messages                              |
+| purge  | amount (number)  | Purges x amount of messages up to 100                    |
 
 ## Code Example
 
