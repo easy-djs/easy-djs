@@ -46,7 +46,7 @@ class CommandsClass {
 					this.actions.unmute(cmd, message, this.muterole);
 					break;
 				case "purge":
-					this.actions.purge(cmd, messagee);
+					this.actions.purge(cmd, message);
 					break;
 				default:
 					throw "What action should happen\n\nOptions:\nkick\nban\nmute\nunmute\npurge";
