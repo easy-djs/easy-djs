@@ -6,3 +6,5 @@ search.previews: 3
 search.tokenizer_separator: /[\s/]+/
 search.preview_words_before: 5
 search.preview_words_after: 10
+gems:
+ - jekyll-seo-tag
