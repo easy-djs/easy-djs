@@ -200,10 +200,10 @@ class actionClass {
     }
   }
   purge(cmd, message) {
-    let formated = this.format.formatText(cmd.action.purge, message, cmd);
-    if (isNaN(Number(formated))) throw "Amount must be a number";
-    if (Number(formated) > 100) throw "Amount must be less than 100";
-    message.channel.bulkDelete(Number(formated));
+    let formatted = this.format.formatText(cmd.action.purge, message, cmd);
+    if (isNaN(Number(formatted))) throw "Amount must be a number";
+    if (Number(formatted) > 100) throw "Amount must be less than 100";
+    message.channel.bulkDelete(Number(formatted));
     if (cmd.reply.text) {
       message.channel.send(
         this.format.formatText(cmd.reply.text, message, cmd)

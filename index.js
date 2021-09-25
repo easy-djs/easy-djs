@@ -6,9 +6,9 @@ class Bot {
     /**
      * @param {string} token What is the bots token
      * @param {string} prefix What Should The prefix be
-     * @param {string|number} muterole The muterole id
+     * @param {Object.<string, string|number>} muteData The muterole data in an array {"serverid": "role id"}
      */
-    constructor(token = undefined, prefix = "?", muterole) {
+    constructor(token = undefined, prefix = "?", muteData) {
         if (token === undefined) {
             throw "No Token Specified";
         } else {
@@ -23,7 +23,7 @@ class Bot {
                 console.log('Prefix set to "' + this.prefix + '"');
             });
         }
-        this.commands = new CommandsClass(prefix, muterole);
+        this.commands = new CommandsClass(prefix, muteData, {token: token, clientId: client.user.id});
     }
 
     initiate() {
