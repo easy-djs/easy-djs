@@ -1,4 +1,4 @@
-const actions = require("./actions.js")
+const actions = require("../actions/actions")
 
 class actionClass {
     constructor(format) {

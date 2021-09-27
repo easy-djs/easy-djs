@@ -5,9 +5,9 @@ const {Routes} = require('discord-api-types/v9');
 const commands = []
 
 class registerSlashCommands {
-    constructor(data) {
+    addData(data) {
         this.token = data.token
-        this.clientId = data.token
+        this.clientId = data.clientId
     }
 
     addCommand(name, description) {
@@ -15,11 +15,12 @@ class registerSlashCommands {
     }
 
     sendCommands() {
-        const rest = new REST({version: '9'}).setToken(this.token);
-
-        rest.put(Routes.applicationCommands(this.clientId), {body: commands.map(command => command.toJSON())})
-            .then(() => console.log('Registered the following slash commands please wait up to one hour for it to update in every server\n' + commands.map(command => command.name + "\n")))
-            .catch(console.error);
+        setTimeout(() => {
+            const rest = new REST({version: '9'}).setToken(this.token.toString());
+            rest.put(Routes.applicationCommands(this.clientId), {body: commands.map(command => command.toJSON())})
+                .then(() => console.log('Registered the following slash commands please wait up to one hour for it to update in every server\n' + commands.map(command => command.name)))
+                .catch(console.error);
+        }, 1000)
     }
 }
 

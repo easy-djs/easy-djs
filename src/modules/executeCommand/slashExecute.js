@@ -9,7 +9,8 @@ class slashExecute {
         if (cmd.reply.text) {
             interaction.reply(cmd.reply.text)
         } else if (cmd.reply.embed) {
-            interaction.reply(cmd.reply.embed)
+            interaction.reply({embeds: [cmd.reply.embed]})
         }
     }
 }
+module.exports = slashExecute

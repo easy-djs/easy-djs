@@ -1,10 +1,10 @@
-const registerSlashCommands = require("./workers/registerSlashCommands")
+const registerSlashCommands = require("./registerSlashCommands")
 const commandData = {};
 const slashCommandData = {};
 
 class cmdCreate {
-    constructor(data) {
-        this._slash = new registerSlashCommands(data)
+    constructor() {
+        this.slashData = new registerSlashCommands()
     }
 
     /**
@@ -17,7 +17,7 @@ class cmdCreate {
      * @param {string} [data.reply.action.mute] Who are we Muting
      * @param {string} [data.reply.action.unmute] Who are we Unmuting
      * @param {string} [data.reply.action.purge] How many messages are we purging (1 to 100)
-     * @param {Object.<string, string|Object.<string, string>>} data.reply.embed DiscordJS Embed Field Data
+     * @param {Object.<string, string|Object.<string, string|Object.<string, string>>>} data.reply.embed DiscordJS Embed Field Data
      * @param {string} data.reply.text What should the bot reply with (Text Reply)
      * @param {string} [data.noMention] What should the bot say when a mention is required but no mention is given (Not Required)
      * @param {string} [data.noPerms] What should the bot say when permissions are required but the user does not have them (Not Required)
@@ -37,7 +37,7 @@ class cmdCreate {
      */
     slash(cmdname, description, data) {
         slashCommandData[cmdname] = data;
-        this._slash.addCommand(cmdname, description)
+        this.slashData.addCommand(cmdname, description)
         console.log("Added Slash Command " + cmdname);
     }
 

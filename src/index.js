@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
-const client = new Discord.Client({intents: []});
+const intents = new Discord.Intents();
+intents.add(Discord.Intents.FLAGS.GUILD_MESSAGES,Discord.Intents.FLAGS.GUILDS)
+const client = new Discord.Client({intents: intents});
 const CommandsClass = require("./modules/commandsClass.js");
 
 class Bot {
@@ -18,16 +20,21 @@ class Bot {
                 throw "Problem Logging in to Bot. Check your Token";
             }
             this.prefix = prefix;
+            this.commands = new CommandsClass(prefix, muteData);
             client.on("ready", () => {
                 console.log("Logged in as " + client.user.tag);
                 console.log('Prefix set to "' + this.prefix + '"');
+                this.commands.create.slashData.addData({token: token, clientId: client.user.id})
             });
         }
-        this.commands = new CommandsClass(prefix, muteData, {token: token, clientId: client.user.id});
+    }
+
+    sendCommands() {
+        this.commands.create.slashData.sendCommands()
     }
 
     initiate() {
-        client.on("message", (message) => {
+        client.on("messageCreate", (message) => {
             if (message.channel.type === `dm`) return;
             if (message.author.bot) return;
             if (!message.content.startsWith(this.prefix)) return;
@@ -35,14 +42,13 @@ class Bot {
             const args = message.content.slice(this.prefix.length).trim().split(/ +/);
             const command = args.shift();
             if (this.commands.exists(command)) {
-                this.commands.execute(command, message);
+                this.commands.message.execute(command, message);
             }
         });
 
         client.on('interactionCreate', interaction => {
             if (!interaction.isCommand()) return;
             const {commandName} = interaction;
-            let cmdData = this.commands.getSlash(commandName)
             this.commands.slash.execute(commandName, interaction)
         });
     }

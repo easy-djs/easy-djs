@@ -1,7 +1,9 @@
 class messageExecute {
-    constructor(format, create) {
+    constructor(format, create, actions, mr) {
         this.format = format
         this.create = create
+        this.actions = actions
+        this.muterole = mr
     }
 
     execute(cmdName, message) {
@@ -9,12 +11,15 @@ class messageExecute {
         if (!cmd.action) {
             if (cmd.reply.text) {
                 message.channel.send(
-                    this.format.formatText(cmd.reply.text, message, cmd)
+                    this.format.message.formatText(cmd.reply.text, message, cmd)
                 );
             } else if (cmd.reply.embed) {
                 message.channel.send({
-                    embed: this.format.formatEmbed(cmd.reply.embed, message, cmd),
-                });
+                    embeds: [
+                        this.format.message.formatEmbed(cmd.reply.embed, message, cmd),
+                    ]
+                })
+                ;
             }
         } else {
             switch (Object.keys(cmd.action)[0].toString()) {
@@ -39,3 +44,5 @@ class messageExecute {
         }
     }
 }
+
+module.exports = messageExecute
