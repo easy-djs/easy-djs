@@ -2,7 +2,7 @@ const {SlashCommandBuilder} = require('@discordjs/builders');
 const {REST} = require('@discordjs/rest');
 const {Routes} = require('discord-api-types/v9');
 
-const commands = [].map(command => command.toJSON());
+const commands = []
 
 class registerSlashCommands {
     constructor(data) {
@@ -17,8 +17,8 @@ class registerSlashCommands {
     sendCommands() {
         const rest = new REST({version: '9'}).setToken(this.token);
 
-        rest.put(Routes.applicationCommands(this.clientId), {body: commands})
-            .then(() => console.log('Registered the following slash commands as global commands'))
+        rest.put(Routes.applicationCommands(this.clientId), {body: commands.map(command => command.toJSON())})
+            .then(() => console.log('Registered the following slash commands as global commands\n' + commands.map(command => command.name + "\n")))
             .catch(console.error);
     }
 }
