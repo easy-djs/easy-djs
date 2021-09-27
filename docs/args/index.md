@@ -5,6 +5,7 @@ title: Arguments
 ---
 
 # Arguments
+###Slash Commands Currently do not support this feature
 
 All the info you will need on the arguments that you can use in your replies.
 

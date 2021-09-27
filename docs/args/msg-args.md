@@ -4,8 +4,9 @@ nav_order: 2
 parent: Arguments
 ---
 
-# Message Arguments
 
+# Message Arguments
+###Slash Commands Currently do not support this feature
 | Argument                                   | What it Gives                                                     | Where it can be used |
 | ------------------------------------------ | ----------------------------------------------------------------- | -------------------- |
 | [args](#args)                              | All the message arguments seperated by commas                     | Replies              |

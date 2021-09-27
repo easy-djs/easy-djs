@@ -5,6 +5,7 @@ parent: Arguments
 ---
 
 # User Arguments
+###Slash Commands Currently do not support this feature
 
 ## First User Mentioned
 
