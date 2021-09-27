@@ -18,7 +18,7 @@ class registerSlashCommands {
         const rest = new REST({version: '9'}).setToken(this.token);
 
         rest.put(Routes.applicationCommands(this.clientId), {body: commands.map(command => command.toJSON())})
-            .then(() => console.log('Registered the following slash commands as global commands\n' + commands.map(command => command.name + "\n")))
+            .then(() => console.log('Registered the following slash commands please wait up to one hour for it to update in every server\n' + commands.map(command => command.name + "\n")))
             .catch(console.error);
     }
 }

@@ -1,7 +1,7 @@
 const actionClass = require("./workers/actionClass");
 const formatClass = require("./workers/formatClass");
 const cmdClass = require("./workers/cmdCreate");
-
+const slashExecute = require("./workers/slashCommandExecution")
 
 class CommandsClass {
     constructor(prefix, muteData, slashCmdData) {
@@ -9,10 +9,15 @@ class CommandsClass {
         this.actions = new actionClass(this.format);
         this.muterole = muteData
         this.create = new cmdClass(slashCmdData);
+        this.slash = new slashExecute(this.format)
     }
 
     exists(cmdName) {
         return this.create.get(cmdName) != null;
+    }
+
+    getSlash(cmdName) {
+        return this.create.getSlash(cmdName);
     }
 
     execute(cmdName, message) {

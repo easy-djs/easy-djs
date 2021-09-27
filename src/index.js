@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const client = new Discord.Client({ intents: [] });
+const client = new Discord.Client({intents: []});
 const CommandsClass = require("./modules/commandsClass.js");
 
 class Bot {
@@ -37,6 +37,13 @@ class Bot {
             if (this.commands.exists(command)) {
                 this.commands.execute(command, message);
             }
+        });
+
+        client.on('interactionCreate', interaction => {
+            if (!interaction.isCommand()) return;
+            const {commandName} = interaction;
+            let cmdData = this.commands.getSlash(commandName)
+            this.commands.slash.execute(commandName, interaction)
         });
     }
 
