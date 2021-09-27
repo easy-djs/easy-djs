@@ -16,7 +16,7 @@ nav_order: 4
 ## Code Example
 
 ```js
-Bot.commands.create("kick", {
+Bot.commands.create.text("kick", {
   reply: {
     text: "Kicked #{firstUserMention.username}",
     action: { kick: "firstUserMention" },

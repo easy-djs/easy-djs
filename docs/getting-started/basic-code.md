@@ -9,27 +9,31 @@ parent: Getting Started
 ```javascript
 const easydjs = require("easy-djs");
 const prefix = "<prefix>"; // replace <prefix> with what you want the token to be
-const Bot = new easydjs.Bot("<token>", prefix, "<muteRoleId Optional>"); // replace <token> with your token and <muteRoleId Optional> with the id of the mute role 
+const Bot = new easydjs.Bot("<token>", prefix, {"guildId": "roleId"}); // replace <token> with your token and format the mute role data based off {"guildId": "roleId", "otherGuildId": "otherRoleId"}
 
-Bot.initiate(); // Makes the bot start waiting for commands
-
-Bot.commands.create("kick", {
+Bot.commands.create.text("kick", {
 	reply: {text: "Kicked #{firstUserMention.tag}"},
 	action: {kick: "firstUserMention"},
 });
 
-Bot.commands.create("ban", {
+Bot.commands.create.text("ban", {
 	reply: {text: "Banned #{firstUserMention.tag}"},
 	action: {ban: "firstUserMention"},
 });
 
-Bot.commands.create("help", {
+Bot.commands.create.text("help", {
 	reply: {
 		text: `${prefix}kick <mention>\n${prefix}ban <mention>\n${prefix}help\n${prefix}av <mention>`,
 	},
 });
 
-Bot.commands.create("av", {
+Bot.commands.create.slash("help", {
+    reply: {
+        text: `${prefix}kick <mention>\n${prefix}ban <mention>\n${prefix}help\n${prefix}av <mention>`,
+    },
+}); // Slash Command for Help
+
+Bot.commands.create.text("av", {
 	reply: {
 		embed: {
 			title: "#{firstUserMention.username}'s avatar",
@@ -39,6 +43,9 @@ Bot.commands.create("av", {
 });
 
 Bot.setStatus({type: "watching", text: "YouTube"});
+
+Bot.initiate(); // Makes the bot start waiting for commands
+Bot.sendCommands(); //Send Slash commands to discord *must be after all of the Bot.commands.create.slash() functions*
 ```
 
-This is the code for help, kick, ban and avatar cmds avatar is av
+This is the code for help, kick, ban and avatar commands avatar is av
