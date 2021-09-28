@@ -27,7 +27,7 @@ Bot.commands.create.text("help", {
 	},
 });
 
-Bot.commands.create.slash("help", {
+Bot.commands.create.slash("help", "Sends Command Info", {
     reply: {
         text: `${prefix}kick <mention>\n${prefix}ban <mention>\n${prefix}help\n${prefix}av <mention>`,
     },
