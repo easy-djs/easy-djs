@@ -15,6 +15,14 @@ Bot.commands.create.slash("help");
 Replace help with your command name for example `Bot.commands.create.slash("avatar")`
 would be a command with the name avatar
 
+## Command Description
+
+```js
+Bot.commands.create.slash("name", "description");
+```
+
+Replace description with your command name for example `Bot.commands.create.slash("help", "gives command info")`
+
 ## Reply
 
 | Reply Text                                          | Reply Embed                                             |
@@ -26,12 +34,12 @@ all the embed fields here
 [https://discordjs.guide/popular-topics/embeds.html\#using-an-embed-object](https://discordjs.guide/popular-topics/embeds.html#using-an-embed-object)
 
 ```js
-Bot.commands.create.slash("cmdName", {});
+Bot.commands.create.slash("cmdName", "desc", {});
 ```
 
 Reply data goes in the second field for example
 
 ```js
-Bot.commands.create.slash("Hi", {reply: {text: "Hello"}});
+Bot.commands.create.slash("Hi", "desc", {reply: {text: "Hello"}});
 ```
 
