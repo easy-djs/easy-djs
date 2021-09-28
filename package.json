@@ -2,7 +2,7 @@
   "name": "easy-djs",
   "version": "1.0.0",
   "description": "Simplifies DiscordJS So Anyone Can Make a Bot",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
