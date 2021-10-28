@@ -11,7 +11,7 @@ class registerSlashCommands {
     }
 
     addCommand(name, description) {
-        commands.push(new SlashCommandBuilder().setName(name.toString()).setDescription(description.toString()))
+        commands.push(new SlashCommandBuilder().setName(name.toString().toLowerCase()).setDescription(description.toString()))
     }
 
     sendCommands() {
